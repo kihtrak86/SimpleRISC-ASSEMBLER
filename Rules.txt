@@ -1,105 +1,65 @@
-# SimpleRISC Assembler Rules
+SimpleRISC Assembler Rules
 
 Please follow the rules below while writing SimpleRISC assembly programs.
 
-## 1. Separate operands using spaces only
+1. Separate operands using spaces only
 
-Do **not** use commas between operands.
+Do NOT use commas between operands.
 
-**Correct**
-
-```text
+Correct:
 ADD R1 R2 R3
-```
 
-**Incorrect**
-
-```text
+Incorrect:
 ADD,R1,R2,R3
-```
 
----
+2. Load and Store instruction format
 
-## 2. Load and Store instruction format
+For LD and ST instructions, specify the base register first, followed by the immediate offset.
 
-For `LD` and `ST` instructions, specify the base register first, followed by the immediate offset.
-
-**Correct**
-
-```text
+Correct:
 LD R1 R2 5
 ST R3 R4 8
-```
 
-**Incorrect**
-
-```text
+Incorrect:
 LD R1 5[R2]
 ST R3 8[R4]
-```
 
----
+3. Label declaration
 
-## 3. Label declaration
+Labels must end with a colon (:).
 
-Labels must end with a colon (`:`).
-
-**Correct**
-
-```text
+Correct:
 LOOP:
-```
 
-**Incorrect**
-
-```text
+Incorrect:
 LOOP
-```
 
----
+4. Place instructions below labels
 
-## 4. Place instructions below labels
+Do NOT write an instruction on the same line as a label.
 
-Do **not** write an instruction on the same line as a label.
-
-**Correct**
-
-```text
+Correct:
 LOOP:
 ADD R1 R2 R3
 SUB R4 R4 1
-```
 
-**Incorrect**
-
-```text
+Incorrect:
 LOOP: ADD R1 R2 R3
-```
 
----
+5. Do not place comments on the same line as a CMP instruction
 
-## 5. Do not place comments on the same line as a `CMP` instruction
+Write the CMP instruction on its own line without any trailing comments.
 
-Write the `CMP` instruction on its own line without any trailing comments.
-
-**Correct**
-
-```text
+Correct:
 CMP R3 0
-```
 
-**Incorrect**
-
-```text
+Incorrect:
 CMP R3 0    # Compare R3 with 0
-```
 
----
+General Notes
 
-## General Notes
-
-* Instruction names are case-insensitive (`ADD` and `add` are both accepted).
-* Register names should be written in the format `R<number>` (e.g., `R0`, `R1`, `R10`).
-* Branch instructions (`B`, `BEQ`, `BGT`, `CALL`) must be followed by a valid label or address.
-* One instruction should be written per line.
-* Remove unnecessary spaces or blank lines to improve readability.
+* Instruction names are case-insensitive (ADD and add are both accepted).
+* Register names should be written in the format R<number> (e.g., R0, R1, R10).
+* Branch instructions (B, BEQ, BGT, CALL) must be followed by a valid label or address.
+* Write only one instruction per line.
+* Remove unnecessary spaces and blank lines for better readability.
